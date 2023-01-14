@@ -45,9 +45,11 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(3, count_down, count - 1)
+        window.after(1000, count_down, count - 1)
     else:  # Count goes to 0
         start_timer()
+        marks = reps // 2
+        check_mark_label.config(text=marks * CHECK_MARK)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -70,7 +72,7 @@ start_btn.grid(row=2, column=0)
 reset_btn = tkinter.Button(text="Reset", highlightthickness=0)
 reset_btn.grid(row=2, column=2)
 
-check_mark_label = tkinter.Label(text=CHECK_MARK, bg=YELLOW, fg=GREEN, font=(FONT_NAME, 20))
+check_mark_label = tkinter.Label(bg=YELLOW, fg=GREEN, font=(FONT_NAME, 20))
 check_mark_label.grid(row=3, column=1)
 
 window.mainloop()
