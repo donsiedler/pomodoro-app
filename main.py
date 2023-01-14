@@ -26,10 +26,13 @@ def start_timer():
 
     if reps % 8 == 0:
         count_down(long_break_sec)
+        app_label.config(text="Break", fg=RED)
     elif reps % 2 == 1:
         count_down(work_sec)
+        app_label.config(text="Pomodoro", fg=GREEN)
     else:
         count_down(short_break_sec)
+        app_label.config(text="Break", fg=PINK)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -42,7 +45,7 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        window.after(3, count_down, count - 1)
     else:  # Count goes to 0
         start_timer()
 
